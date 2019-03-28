@@ -7,22 +7,26 @@ class Card extends Component {
         return (
             <View>
                 <CardSection >
+                    <View style={{ flexDirection: 'row' }}>
                     <Image 
                     style={{ width: 100, height: 100 }}
                     source={{ uri: 'https://goo.gl/63aHfT' }} 
                     ></Image>
-                    <Text>พรุ่งนี้ค่อย</Text>
-                    <Text>POP</Text>
+                    <View style={{ marginTop: 37, marginLeft: 30 }}>
+                    <Text>ศุภกฤต ชุนประวัติ</Text>
+                    <Text>KMUTNB</Text>
+                    </View>
+                </View>
                 </CardSection>
                 <CardSection >
                 <Image 
-                    style={{ width: 450, height: 300 }}
+                    style={{ width: 420, height: 280.0 }}
                     source={{ uri: 'https://goo.gl/63aHfT' }} 
                     ></Image>
                 </CardSection>
                 <CardSection>
                     <View style={ styles.button }>
-                    <View style={{ width: 100, backgroundColor: 'red' }}>
+                    <View style={{ width: 100}}>
                     <Button
                         title="Buy"
                     />
@@ -38,7 +42,7 @@ const styles = {
     button: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30
+        marginTop: 25
     }
 }
 
