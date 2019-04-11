@@ -27,9 +27,7 @@ class Card extends Component {
                 <CardSection>
                     <View style={ styles.button }>
                     <View style={{ width: 100}}>
-                    <Button
-                        title="Buy"
-                    />
+                    <Button title="Buy"/>
                     </View>
                     </View>
                 </CardSection>
