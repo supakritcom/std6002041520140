@@ -1,12 +1,9 @@
 // import libray
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
-
-
-
-// write component
+// write component 
 class About extends Component {
     constructor() {
         super();
@@ -18,27 +15,32 @@ class About extends Component {
 
     componentDidMount() {
         const url = 'http://128.199.240.120:9999/api/auth/me';
-       const config ={
-           headers: {
+        const config = {
+            headers: {
                 accept: '*/*',
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1Y2E1YWZhZTE5OGUwMDA4NDcyZGRlMzIiLCJpYXQiOjE1NTQ5NjgzNjZ9.o7Lbg14kM9W9jQmRdiwNA_HLiLxDE3WuRyEcD_b0NbE'
-           }
-       }
-    axios.get(url, config)
-    .then(response => {
-        console.log(response.data.data);
-        this.setState({
-            email: response.data.data.email,
-            name: response.data.data.name
+            }
+        }
 
-        })
-    })
-    .catch(error => {
-        console.log('error',error);
-    })   
+        axios.get(url, config)
+            .then(response => {
+                console.log(response.data.data);
+                this.setState({
+                    email: response.data.data.email,
+                    name: response.data.data.name
+                })
+            })
+            .catch(error => {
+                console.log('error', error);
+            })
     }
-    
+
     render() {
+        if (this.state.name == '') {
+            return <View>
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        }
         return (
             <View>
                 <Text style={styles.text}>Name: {this.state.name}</Text>
@@ -50,9 +52,9 @@ class About extends Component {
 
 const styles = {
     text: {
-        fontSize:20
+        fontSize: 30
     }
 }
 
-// export
+// export 
 export default About;
