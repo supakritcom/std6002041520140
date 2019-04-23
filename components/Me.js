@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@supakritcom 
-1
-0 0 maxpromer/std60002041520158-mobile
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-std60002041520158-mobile/components/Me.js
-@maxpromer maxpromer จัดรูปแบบ Style
-558d7ea 12 days ago
-120 lines (100 sloc)  3.38 KB
-    
 import React from 'react';
 import { View, Text, Button, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -134,16 +116,3 @@ export default class Me extends React.Component {
         );
     }
 }
-
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
