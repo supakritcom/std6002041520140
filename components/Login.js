@@ -9,7 +9,7 @@ export default class Login extends React.Component {
         headerStyle: {
             backgroundColor: "#F39C12",
         },
-        headerTintColor: "#FFF",
+        headerTintColor: "#FF0033",
         headerLeft: null,
     };
     
@@ -110,7 +110,7 @@ export default class Login extends React.Component {
                     <TouchableOpacity onPress={this.goLogin.bind(this)}>
                         <View style={{
                             borderColor: "#CCC",
-                            backgroundColor: "#F39C12",
+                            backgroundColor: "#99FF00",
                             padding: 10,
                             borderBottomLeftRadius: 6,
                             borderBottomRightRadius: 6
