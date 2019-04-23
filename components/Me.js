@@ -1,5 +1,23 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@supakritcom 
+1
+0 0 maxpromer/std60002041520158-mobile
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+std60002041520158-mobile/components/Me.js
+@maxpromer maxpromer จัดรูปแบบ Style
+558d7ea 12 days ago
+120 lines (100 sloc)  3.38 KB
+    
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
@@ -7,7 +25,7 @@ export default class Me extends React.Component {
     static navigationOptions = {
         title: "Profile",
         headerStyle: {
-            backgroundColor: "red",
+            backgroundColor: "#F39C12",
         },
         headerTintColor: "#FFF",
     };
@@ -32,7 +50,7 @@ export default class Me extends React.Component {
                 if (value !== null) {
                     token = value;
                 } else {
-                    alert("กรุณาเข้าสู่ระบบก่อน");
+                    // alert("กรุณาเข้าสู่ระบบก่อน");
                     this.setState({ loading: false });
 
                     this.props.navigation.navigate("Login");
@@ -40,7 +58,7 @@ export default class Me extends React.Component {
                     return;
                 }
             } catch (error) {
-                console.error(error);
+                // console.error(error);
 
                 this.setState({ loading: false });
                 return;
@@ -53,7 +71,7 @@ export default class Me extends React.Component {
             }).then(function (response) {
                 // alert("Get OK !");
 
-                console.log(response);
+                // console.log(response);
 
                 this.setState({ 
                     email: response.data.data.email, 
@@ -62,7 +80,7 @@ export default class Me extends React.Component {
 
                 this.setState({ loading: false });
             }.bind(this)).catch(function (error) {
-                console.log(error);
+                // console.log(error);
 
                 alert("Get fail !");
                 this.setState({ loading: false });
@@ -84,15 +102,48 @@ export default class Me extends React.Component {
         return (
             !this.state.loading ? 
             <View style={{ padding: 20 }}>
-                <Text style={{ textAlign: "center", fontSize: 28, color: "#FF0033", marginBottom: 20 }}>Profile</Text>
-                <Text style={{ marginBottom: 10, fontSize: 16 }}>Name: {this.state.name}</Text>
-                <Text style={{ marginBottom: 10, fontSize: 16 }}>Email: {this.state.email}</Text>
+                <Text style={{ 
+                    textAlign: "center", 
+                    fontSize: 28, 
+                    color: "#F39C12", 
+                    marginBottom: 20 
+                }}>Your profile</Text>
 
-                <Button title="Logout" color="green" onPress={this.logout.bind(this)} />
+                <Text style={{ 
+                    marginBottom: 10, 
+                    fontSize: 16 
+                }}>Name: {this.state.name}</Text>
+                <Text style={{ 
+                    marginBottom: 10, 
+                    fontSize: 16 
+                }}>Email: {this.state.email}</Text>
+
+                <Button title="Logout" onPress={this.logout.bind(this)} />
             </View> : 
-            <View style={{ padding: 20 }}>
-                <Text style={{ textAlign: "center", fontSize: 18 }}>Loading...</Text>
+            <View style={{ 
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+                alignItems: "center", 
+                justifyContent: "center" 
+            }}>
+                <ActivityIndicator size="large" color="#F39C12" />
             </View>
         );
     }
 }
+
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
