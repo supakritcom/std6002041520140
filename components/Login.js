@@ -1,16 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
-
-let style = {
-    input: {
-        fontSize: 18, 
-        borderBottomColor: "#CCC", 
-        borderBottomWidth: 2,
-        marginBottom: 20
-    }
-}
 
 export default class Login extends React.Component {
     static navigationOptions = {
@@ -19,6 +10,7 @@ export default class Login extends React.Component {
             backgroundColor: "#F39C12",
         },
         headerTintColor: "#FFF",
+        headerLeft: null,
     };
     
     constructor() {
@@ -36,7 +28,7 @@ export default class Login extends React.Component {
                 this.props.navigation.navigate("Me");
             }
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
 
@@ -47,7 +39,7 @@ export default class Login extends React.Component {
         }).then(async function (response) {
             // alert("Logined !");
 
-            console.log(response.data.data.token);
+            // console.log(response.data.data.token);
             try {
                 await AsyncStorage.setItem("login_token", response.data.data.token);
             } catch (error) {
@@ -61,7 +53,7 @@ export default class Login extends React.Component {
         .catch(function (error) {
             alert("Login fail !");
 
-            console.log(error);
+            // console.log(error);
         });
     }
 
@@ -69,23 +61,68 @@ export default class Login extends React.Component {
         return (
             <View style={{ paddingTop: 20 }}>
                 <Text style={{ textAlign: "center", fontSize: 28, color: "#F39C12" }}>Login Form</Text>
-                <View style={{ padding: 20 }}>
+                <View style={{ 
+                    margin: 20, 
+                    /*
+                    borderWidth: 1,
+                    borderColor: "#CCC",
+                    backgroundColor: "#FFF",
+                    */
+                    backgroundColor: "#FFF",
+                    borderRadius: 6,
+                    elevation: 4
+                }}>
                     <TextInput
                         placeholder="Email"
                         onChangeText={(text) => this.setState({ email: text })}
                         value={this.state.email}
-                        style={style.input}
+                        style={{
+                            fontSize: 18,
+                            marginLeft: 6
+                        }}
                     />
+                    
+                    <View style={{
+                        backgroundColor: "#F0F3F4",
+                        height: 1
+                    }}></View>
 
                     <TextInput
                         placeholder="Password"
                         onChangeText={(text) => this.setState({ password: text })}
                         value={this.state.password}
-                        style={style.input}
+                        style={{
+                            fontSize: 18,
+                            marginLeft: 6
+                        }}
                         secureTextEntry
                     />
 
-                    <Button title="Login" onPress={this.goLogin.bind(this)} />
+                    {/*<Button 
+                        title="Login" 
+                        onPress={this.goLogin.bind(this)} 
+                        style={{
+                            borderRadius: 0,
+                            elevation: 0
+                        }}
+                    />*/}
+
+                    <TouchableOpacity onPress={this.goLogin.bind(this)}>
+                        <View style={{
+                            borderColor: "#CCC",
+                            backgroundColor: "#F39C12",
+                            padding: 10,
+                            borderBottomLeftRadius: 6,
+                            borderBottomRightRadius: 6
+                        }}>
+                            <Text style={{ 
+                                textAlign: "center", 
+                                fontSize: 18,
+                                color: "#FFF",
+                                fontWeight: "bold"
+                            }}>Login</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
